@@ -5,7 +5,7 @@ int main(){
     scanf("%d %d %d %d", &distInicioX, &distInicioY, &distFimX, &distFimY);
     distX = (distFimX - distInicioX);
     distY = (distFimY - distInicioY);
-     if(distX < 0){
+    if(distX < 0){
         distX = distX * (-1);
     }
     if(distY < 0){
