@@ -3,8 +3,8 @@
 int main(){
     double PAlcool, PGasolina, RAlcool, RGasolina,VAlcool,VGasolina;
     scanf("%lf %lf %lf %lf", &PAlcool, &PGasolina, &RAlcool, &RGasolina);
-    VAlcool = PAlcool * RAlcool;
-    VGasolina = PGasolina * RGasolina;
+    VAlcool = PAlcool / RAlcool;
+    VGasolina = PGasolina / RGasolina;
     if(VAlcool < VGasolina){
         printf("A\n");
     }
