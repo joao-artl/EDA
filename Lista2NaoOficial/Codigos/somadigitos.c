@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int somadigitos(int i, int soma){
+int somadigitos(long long int i, int soma){
     soma = soma + i % 10;
     if(i / 10 >= 0 && i / 10 < 10){
         soma = soma + i / 10;
@@ -13,9 +13,9 @@ int somadigitos(int i, int soma){
 }
 
 int main(){
-    int numero, soma = 0;
-    scanf("%d", &numero);
+    long long int numero, soma = 0;
+    scanf("%lld", &numero);
     soma = somadigitos(numero, soma);
-    printf("%d\n", soma);
+    printf("%lld\n", soma);
     return 0;
 }
