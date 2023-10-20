@@ -3,12 +3,6 @@
 char* ponteiro;
 
 void trocaX(char palavra[], int i){
-    if(palavra[i] != '\0'){
-    ponteiro = palavra;
-
-}
-
-void trocaX(char palavra[], int i){
     if(palavra[i] == 'x'){
         palavra[i] = 'y';
         i++;
@@ -16,20 +10,21 @@ void trocaX(char palavra[], int i){
     }
     else{
         if(palavra[i] != '\0'){
-        ponteiro = palavra;
-    }
-        else{
         i++;
         trocaX(palavra, i);
+    }
+        else{
+        ponteiro = palavra;
+        return;
         }
     }
 }
 
 int main(){
-    char palavra[1000];
+    char palavra[1001];
     int i = 0;
     scanf("%s", palavra);
     trocaX(palavra, i);
-    printf("%s", *&ponteiro);
+    printf("%s\n", *&ponteiro);
     return 0;
 }
