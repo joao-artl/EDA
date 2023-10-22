@@ -28,10 +28,10 @@ int main(){
             printf("9 is a multiple of 9 and has 9-degree 1.");
         }
         else if(resultado % 9 == 0){
-            printf("%d is a multiple of 9 and has 9-degree %d.", numero, contador);
+            printf("%lld is a multiple of 9 and has 9-degree %d.", numero, contador);
         }
         else{
-            printf("%d is not a multiple of 9.", numero);
+            printf("%lld is not a multiple of 9.", numero);
         }
         scanf("%lld", &numero);
     }
