@@ -18,7 +18,7 @@ void imprime_rec (celula *le){
     celula *p = le->prox;
     if(p != NULL){
         printf("%d -> ", p->dado);
-        imprime_rec(le -> prox);
+        return imprime_rec(le -> prox);
     }
     printf("NULL\n");
     return;
