@@ -8,8 +8,7 @@ struct no *esq, *dir;
 void pre_ordem (no *raiz){
     if(raiz != NULL){
         printf("%d ", raiz->dado);
-        pos_ordem(raiz->esq);
-        pos_ordem(raiz->dir);
-        
+        pre_ordem(raiz->esq);
+        pre_ordem(raiz->dir);
     }
 }
