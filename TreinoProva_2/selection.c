@@ -8,16 +8,16 @@ typedef int Item;
 #define cmpexch(A,B){if(less(B,A))exch(A,B)}
 #define lessEq(A,B) (Key(A) <= Key (B))
 
-void selectionSort(Item *v, int inicio, int fim){
-    if(inicio == fim) return;
-    int min = inicio;
-    for(int i = inicio + 1; i <= fim; i++ ){
+void selectionSort(Item *v, int l, int r){
+    if(l == r) return;
+    int min = l;
+    for(int i = l + 1; i <= r; i++ ){
         if(less(v[i], v[min])){
             min = i;
         }
     }
-    exch(v[min], v[inicio]);
-    return selectionSort(v, inicio + 1, fim);
+    exch(v[min], v[l]);
+    return selectionSort(v, l + 1, r);
 }
 
 int main(){

@@ -8,9 +8,9 @@ typedef int Item;
 #define cmpexch(A,B){if(less(B,A))exch(A,B)}
 #define lessEq(A,B) (Key(A) <= Key (B))
 
-void bubbleSort(Item *v, int inicio, int fim){
-    for(int i = inicio; i < fim; i++){
-        for(int j = inicio; j < fim; j++){
+void bubbleSort(Item *v, int l, int r){
+    for(int i = l; i < r; i++){
+        for(int j = l; j < r; j++){
             if(less(v[j+1],v[j])){
                 exch(v[j+1],v[j]);
             }

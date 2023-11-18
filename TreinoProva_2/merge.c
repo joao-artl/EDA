@@ -34,14 +34,14 @@ void merge(Item *v, int inicio, int r1, int r2){
     free(v2);
 }
 
-void mergeSort(Item *v, int inicio, int fim){
-    if(inicio >= fim){
+void mergeSort(Item *v, int l, int r){
+    if(l >= r){
         return;
     }
-    int meio = (fim + inicio)/2;
-    mergeSort(v, inicio, meio);
-    mergeSort(v, meio+1, fim);
-    merge(v, inicio, meio, fim);
+    int meio = (r + l)/2;
+    mergeSort(v, l, meio);
+    mergeSort(v, meio+1, r);
+    merge(v, l, meio, r);
 }
 
 int main(){

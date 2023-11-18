@@ -8,11 +8,11 @@ typedef int Item;
 #define cmpexch(A,B){if(less(B,A))exch(A,B)}
 #define lessEq(A,B) (Key(A) <= Key (B))
 
-void insertionSort(Item *v, int inicio, int fim){
-    for(int i = fim; i > inicio; i--){ 
+void insertionSort(Item *v, int l, int r){
+    for(int i = r; i > l; i--){ 
         cmpexch(v[i-1], v[i]); //numero na posição inicio vira o menor
     }
-    for(int i = inicio+2; i <= fim; i++){
+    for(int i = l+2; i <= r; i++){
         int j = i;
         Item tmp = v[j];
         while(less(tmp, v[j-1])){
