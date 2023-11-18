@@ -6,6 +6,7 @@ typedef int Item;
 #define less(A,B) (Key(A) < Key (B))
 #define exch(A,B){Item T = A; A = B; B = T;}
 #define cmpexch(A,B){if(less(B,A))exch(A,B)}
+#define lessEq(A,B) (Key(A) <= Key (B))
 
 void bubbleSort(Item *v, int inicio, int fim){
     for(int i = inicio; i < fim; i++){
