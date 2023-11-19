@@ -8,7 +8,7 @@ typedef int Item;
 #define cmpexch(A,B){if(less(B,A))exch(A,B)}
 #define lessEq(A,B) (Key(A) <= Key (B))
 
-int separa(Item *v, int l, int r){
+int separa(Item *v, int l, int r){ //tbm conhecido como partition
     Item c = v[r]; //pivô
     int j = l;
     for(int k = l; k < r; k++){
@@ -22,13 +22,13 @@ int separa(Item *v, int l, int r){
 }
 
 void quickSort(Item *v, int l, int r){
-    if(r <= l){
+    if(r <= l){ //condição de parada
         return;
     }
     int j;
-    j = separa(v, l, r);
-    quickSort(v, l, j-1);
-    quickSort(v, j+1, r);
+    j = separa(v, l, r); // posição do pivô
+    quickSort(v, l, j-1); //numeros menores que o pivô
+    quickSort(v, j+1, r); //numeros maiores que o pivô
 }
 
 int main(){
