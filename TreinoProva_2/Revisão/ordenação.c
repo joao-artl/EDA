@@ -107,8 +107,8 @@ int partitionV2(Item *v, int l, int r){
     int pivot = v[l];
 
     while(1){
-        while (v [++i] < pivot) if (i == r) break ;
-        while (pivot < v [--j]) if (j == l) break ;
+        while (v[++i] < pivot) if (i == r) break ;
+        while (pivot < v[--j]) if (j == l) break ;
             if (i >= j) break;
             exch (v[i], v[j]);
     }
