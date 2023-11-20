@@ -77,6 +77,21 @@ void shellSort(Item *v, int l, int r){
     }
 }
 
+void shellSortV2(Item *v, int l, int r){
+    int h = 1;
+    while(h < (r-l+1)/3){
+        h = 3 * h + 1;
+    }
+    while(h >= 1){
+        for(int i = l+h; i <=r; i++){
+            for(int j = i; j >= l+h && v[j] < v[j-h]; j = j-h){
+                exch(v[j], v[j-h]);
+            }
+        }
+        h = h / 3;
+    }
+}
+
 int partition(Item *v, int l, int r){
     int c = v[r];
     int j = l;
