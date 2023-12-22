@@ -3,8 +3,7 @@
 #include <string.h>
 
 #define ull unsigned long long
-// #define Item int
-// #define key(x) (x)
+
 #define less(a, b) (a.value == b.value ? a.key > b.key : a.value > b.value)
 #define swap(a, b)  \
     {               \
@@ -52,7 +51,7 @@ void quicksort(Item *v, int l, int r)
 Item ps[91], ss[901], dfs[9001], des[90001];
 int pn = 0, sn = 0, dfn = 0, den = 0;
 
-void solve()
+void resposta()
 {
     long long s, f, e;
     scanf(" %lld %lld %lld", &s, &f, &e);
@@ -123,10 +122,6 @@ void solve()
 
 int main()
 {
-    // int t;
-    // scanf(" %d", &t);
-    // while (t--)
-    solve();
-
+    resposta();
     return 0;
 }
