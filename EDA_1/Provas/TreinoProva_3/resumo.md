@@ -8,9 +8,9 @@
 ## IntroSort
 
 - Complexidade: O(n logn)
-- Adaptatividade: é in-place
+- Adaptatividade: é adaptativo
 - Estabilidade: não é estável
-- In-Place: é adaptativo
+- In-Place: é in-place 
 
 
 ## CountingSort
