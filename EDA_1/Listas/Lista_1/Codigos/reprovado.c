@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-void ordenaMatriz(char matriz[][25], int qtd) {
+void bubbleSort(char matriz[][25], int qtd) {
     for (int i = 0; i < qtd; i++) {
         for (int j = i+1; j < qtd; j++) {
             if (strcmp(matriz[i], matriz[j]) < 0) {
@@ -23,11 +23,10 @@ int main() {
         for(int i = 0; i < alunos; i++) {
             scanf(" %[^\n]s", turma[i]);
         } 
-        ordenaMatriz(turma, alunos);
+        bubbleSort(turma, alunos);
     
         for(int i = 0; i < alunos; i++) {
             t = strlen(turma[i])-1;
-            //printf("[%c]\n", turma[i][t]);
             if(turma[i][t-1] == '1')
                 pontos = 10;
 
@@ -39,7 +38,6 @@ int main() {
                 indice = i;
             }
         }
-
         t = strlen(turma[indice])-1;
         turma[indice][t-1] = '\0';
         printf("Instancia %d\n%s\n\n", inst, turma[indice]);

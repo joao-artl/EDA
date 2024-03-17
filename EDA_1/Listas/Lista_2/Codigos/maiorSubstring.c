@@ -1,32 +1,32 @@
 #include<stdio.h>
 #include<string.h>
 
-int find(char *str, char *sub){
+int procura(char *str, char *sub){
 	if(*sub == '\0')
     	return 0;
   	if(*str != *sub)
   		return -1;
-  	return find(str+1, sub+1);
+  	return procura(str+1, sub+1);
 }
 
-int first_sub(char *str, char *sub, int index){
+int subs_inicio(char *str, char *sub, int index){
 	if(*str != '\0') {
 	int a = -1;
-    a = find(str, sub);
+    a = procura(str, sub);
     if(a == 0)
 		return index;
-    return first_sub(str + 1, sub, ++index);
+    return subs_inicio(str + 1, sub, ++index);
     
 	} else
 		return -1;
 }
 
-int last_sub(char *str, char *sub, int index){
+int subs_fim(char *str, char *sub, int index){
 	int a = -1;
-	a = find(str, sub);
+	a = procura(str, sub);
 	if(a >= 0)
     	return index;
-	return last_sub(str - 1, sub, --index);
+	return subs_fim(str - 1, sub, --index);
 }
 
 int main() {
@@ -34,9 +34,9 @@ int main() {
 	scanf("%s", str);
 	scanf("%s", sub);
 	int init = 0, end = 0;
-	init = first_sub(str, sub, 0);
+	init = subs_inicio(str, sub, 0);
 	if(init != -1) {
-    end = last_sub(&str[strlen(str)], sub, strlen(str));
+    end = subs_fim(&str[strlen(str)], sub, strlen(str));
     printf("%d\n", end - init + strlen(sub));
 	} else
 		printf("0\n");

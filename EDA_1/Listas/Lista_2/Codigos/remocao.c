@@ -6,14 +6,14 @@ typedef struct celula {
 	struct celula *prox;
 } celula;
 
-celula * busca_lista_posicao(celula * le, int x) {
-  celula * elem = le;
-  for (elem = elem; elem -> prox != NULL; elem = elem -> prox) {
-    if (elem -> prox -> dado == x) {
-      return elem;
+celula *posicao(celula * le, int x) {
+  celula *elemento = le;
+  for (elemento = elemento; elemento -> prox != NULL; elemento = elemento -> prox) {
+    if (elemento -> prox -> dado == x) {
+      return elemento;
     }
   }
-  return elem;
+  return elemento;
 }
 
 
@@ -25,16 +25,16 @@ int remove_depois(celula *p){
     p->prox = prox_p->prox;
     free(prox_p);
     return dado_removido;
-  } else {
-     return 1;
+  } 
+  else {
+    return 1;
   }
  
 }
 
 void remove_elemento(celula *le, int x){
-  //Procurando o elemento x em le
   if(le->prox!=NULL){
-    celula *antes_x = busca_lista_posicao(le, x);
+    celula *antes_x = posicao(le, x);
     celula *x_encontrado = antes_x->prox;
 
     antes_x->prox = x_encontrado->prox;
@@ -47,11 +47,11 @@ void remove_elemento(celula *le, int x){
 void remove_todos_elementos(celula *le, int x){
   celula *anterior = le;
   if(le->prox!=NULL){
-    for (celula *elem = le->prox; elem != NULL; elem = elem->prox){
-      if(elem->dado == x){
-        anterior->prox = elem->prox;
+    for (celula *elemento = le->prox; elemento != NULL; elemento = elemento->prox){
+      if(elemento->dado == x){
+        anterior->prox = elemento->prox;
       }
-      anterior = elem;
+      anterior = elemento;
     }
   }
 }

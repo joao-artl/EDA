@@ -12,14 +12,14 @@ celula *cria_pilha(){
     return topo;
 }
 
-int isPilhaVazia(celula *pilha){
+int pilhaVazia(celula *pilha){
     if(pilha->prox == NULL)
         return 0;
     else
         return 1;
 }
 
-void empilha (celula *p, int x){
+void empilha(celula *p, int x){
     celula *ponteiro = malloc(sizeof(celula));
     ponteiro->dado = x;
     ponteiro->prox = p->prox;
@@ -45,7 +45,7 @@ int main(){
     }
 
     while(scanf("%d %c", &tamanho, &pe)!=EOF){
-        if(isPilhaVazia(botas[tamanho-30]) == 0)
+        if(pilhaVazia(botas[tamanho-30]) == 0)
             empilha(botas[tamanho-30], pe);
         else{
             desempilhado = desempilha(botas[tamanho-30]);

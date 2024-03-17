@@ -12,7 +12,7 @@ celula *cria_fila(){
     return novo;
 }
 
-celula *enfileira (celula *fila, int x){
+celula *enfileira(celula *fila, int x){
     celula *ponteiro = malloc(sizeof(celula));
     ponteiro->prox = fila->prox;
     fila->prox = ponteiro;

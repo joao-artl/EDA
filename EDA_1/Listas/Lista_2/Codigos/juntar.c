@@ -1,27 +1,27 @@
 #include <stdio.h>
 #define less(A,B) (A < B)
 
-typedef struct Node {
-	int data;
-	struct Node *next;
-}Node;
+typedef struct celula {
+	int dado;
+	struct celula *prox;
+}celula;
 
-void mescla_listas(Node *l1, Node *l2, Node *l3) {
-	Node *end = l3;
-	l1 = l1->next; l2 = l2->next;
+void mescla_listas(celula *l1, celula *l2, celula *l3) {
+	celula *fim = l3;
+	l1 = l1->prox; l2 = l2->prox;
 	while (l1 && l2) {
-		if (less(l1->data, l2->data)) {
-			end->next = l1;
-			end = end->next;
-			l1 = l1->next;
-			end->next = NULL;
+		if (less(l1->dado, l2->dado)) {
+			fim->prox = l1;
+			fim = fim->prox;
+			l1 = l1->prox;
+			fim->prox = NULL;
 		} else {
-			end->next = l2;
-			end = end->next;
-			l2 = l2->next;
-			end->next = NULL;
+			fim->prox = l2;
+			fim = fim->prox;
+			l2 = l2->prox;
+			fim->prox = NULL;
 		}
 	}
-	if (l1) end->next = l1;
-	else end->next = l2;
+	if (l1) fim->prox = l1;
+	else fim->prox = l2;
 }
