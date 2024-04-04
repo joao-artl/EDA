@@ -1,14 +1,15 @@
 #include <stdio.h>
 
 int main(){
-    int tam, soma = 0, x[10001];
+    int tam, x[10001];
+    long long int soma = 0;
     scanf("%d", &tam);
     for(int i = 0; i < tam; i++){
         scanf("%d", &x[i]);
         soma = soma + x[i];
     }
     int contador = 0;
-    int media = soma/tam;
+    long long int media = soma/tam;
     for(int j = 0; j < tam; j++){
         if(x[j] > media){
             printf("%d ", x[j]);
