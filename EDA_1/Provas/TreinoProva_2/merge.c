@@ -8,12 +8,12 @@ typedef int Item;
 #define cmpexch(A,B){if(less(B,A))exch(A,B)}
 #define lessEq(A,B) (Key(A) <= Key (B))
 
-void merge(Item *v, int inicio, int r1, int r2){
-    Item *v2 = malloc(sizeof(Item)*(r2-inicio +1));
+void merge(Item *v, int l, int m, int r){
+    Item *v2 = malloc(sizeof(Item)*(r-l +1));
     int k = 0;
-    int i = inicio;
-    int j = r1+1;
-    while(i <= r1 && j <= r2){
+    int i = l;
+    int j = m+1;
+    while(i <= m && j <= r){
         if(lessEq(v[i],v[j])){
             v2[k++] = v[i++];
         }
@@ -21,14 +21,14 @@ void merge(Item *v, int inicio, int r1, int r2){
             v2[k++] = v[j++];
         }
     }
-    while(i <= r1){
+    while(i <= m){
         v2[k++] = v[i++];
     }
-    while(j <= r2){
+    while(j <= r){
         v2[k++] = v[j++];
     }
     k = 0;
-    for(i = inicio; i <= r2; i++){
+    for(i = l; i <= r; i++){
         v[i] = v2[k++];
     }
     free(v2);
