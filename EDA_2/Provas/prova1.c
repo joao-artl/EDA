@@ -94,3 +94,19 @@ void mergeSort(int *v, int l, int r){
     mergeSort(v, meio+1, r);
     merge(v, l, meio, r);
 }
+
+int buscaBinaria(int *v, int l, int r, int x){
+    if(l <= r){
+        int m = l + (r - l) / 2;
+        if(x == v[m]){
+            return m;
+        }
+        if(x < v[m]){
+           return buscaBinaria(v, l, m-1, x);
+        }
+        if(x > v[m]){
+            return buscaBinaria(v, m+1, r, x);
+        }
+    }
+    return -1;
+}
