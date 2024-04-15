@@ -42,6 +42,23 @@ void quickSort(int *v, int l, int r){
     quickSort(v, j+1, r);
 }
 
+void quickSelect(int *v, int l, int r, int k){
+    //busca binária utilza o valor e procura o indice, 
+    //quickSelect usa o indice e busca o valor
+    if(r <= l){
+        return;
+    }
+    int j;
+    // pode utilizar a mediana de 3
+    j = partition(v, l, r);
+    if(k < j){
+        quickSelect(v, l, j-1, k);
+    }
+    if(k > j){
+        quickSelect(v, j+1, r, k);
+    }
+}
+
 void merge(int *v, int l, int m, int r){
     int *v2 = malloc(sizeof(int)*(r-l+1));
     int k = 0;
@@ -61,7 +78,7 @@ void merge(int *v, int l, int m, int r){
     while(j <= r){
         v2[k++] = v[j++];
     }
-    int k = 0;
+    k = 0;
     for(i = l; i <= r; i++){
         v[i] = v2[k++];
     }
