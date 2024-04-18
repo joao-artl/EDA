@@ -20,11 +20,11 @@ int partition(int *v, int l, int r){ //tbm conhecido como separa ou partição
     int j = l;
     for(int k = l; k < r; k++){
         if(v[k] <= pivo){
-            swap(v[k],v[j]);
+            swap(&v[k],&v[j]);
             j++;
         }
     }
-    swap(v[j],v[r]);
+    swap(&v[j],&v[r]);
     return j;
 }
 
@@ -109,4 +109,7 @@ int buscaBinaria(int *v, int l, int r, int x){
         }
     }
     return -1;
+}
+int main(){
+    return 0;
 }
