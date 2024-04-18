@@ -43,7 +43,7 @@ void quickSort(int *v, int l, int r){
 }
 
 void quickSelect(int *v, int l, int r, int k){
-    //busca binária utilza o valor e procura o indice, 
+    //busca binária utiliza o valor e procura o indice, 
     //quickSelect usa o indice e busca o valor
     if(r <= l){
         return;
