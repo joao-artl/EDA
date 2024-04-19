@@ -53,6 +53,7 @@
 - Complexidade: O(logn)
 - Vetor deve estar ordenado
 
+
 ## Tabela Hash
 
 - Complexidade: Varia, em média O(1) para inserção, busca e remoção
