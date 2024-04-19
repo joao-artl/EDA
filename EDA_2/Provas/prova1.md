@@ -39,3 +39,16 @@
 - Adaptatividade: Não é adaptativo
 - Estabilidade: Não é estável
 - In-Place: É In-Place
+
+
+## QuickSelect
+
+- Complexidade: O(n), pode virar O(n²)
+- Ordena parcialmente
+- Derivado do quickSort
+
+
+## Busca Binária
+
+- Complexidade: O(logn)
+- Vetor deve estar ordenado
