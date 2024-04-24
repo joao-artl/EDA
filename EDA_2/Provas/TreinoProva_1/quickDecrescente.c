@@ -34,14 +34,14 @@ void quickSort(int *v, int l, int r){
 int main(){
     int n;
     scanf("%d", &n);
-    int v[10];
+    int v[n+1];
     for(int i = 0; i < n; i++){
         scanf("%d", &v[i]);
     }
-    quickSort(v,0,n);
-    for(int i = 1; i < n; i++){
+    quickSort(v, 0, n-1);
+    for(int i = 0; i < n-1; i++){
         printf("%d ", v[i]);
     }
-    printf("%d\n", v[n]);
+    printf("%d\n", v[n-1]);
     return 0;
 }
