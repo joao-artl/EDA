@@ -51,7 +51,7 @@ int main(){
     for(long int i = 0; i < n; i++){
         scanf("%ld", &v[i]);
     }
-    mergeSort(v,0,n);
+    mergeSort(v, 0, n-1);
     for(long int i = 0; i < n-1; i++){
         printf("%ld ", v[i]);
     }
