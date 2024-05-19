@@ -9,30 +9,6 @@ typedef struct No{
     struct No *esq, *dir;
 } No;
 
-No *insere(No *r, int x){
-    if(r == NULL){
-        No *novo = calloc(1, sizeof(No));
-        novo->chave = x;
-        novo->cor = Vermelho;
-        return novo;
-    }
-    else if(x < r->chave){
-        r->esq = insere(r->esq, x);
-    }
-    else if(x > r->chave){
-        r->dir = insere(r->dir, x);
-    }
-    r = corrige_raiz(r);
-    return r;
-}
-
-int ehVermelho(No *r){
-    if(r != NULL && r->cor == Vermelho){
-        return 1;
-    }
-    return 0;
-}
-
 No *rotaciona_direita(No *r){
     No *y = r->esq;
     y->cor = r->cor;
@@ -56,6 +32,13 @@ void sobe_cor(No *r){
     r->esq->cor = r->dir->cor = Preto;
 }
 
+int ehVermelho(No *r){
+    if(r != NULL && r->cor == Vermelho){
+        return 1;
+    }
+    return 0;
+}
+
 No *corrige_raiz(No *r){
     if(ehVermelho(r->esq) && ehVermelho( r->esq->esq)){
         r = rotaciona_direita(r);
@@ -66,5 +49,22 @@ No *corrige_raiz(No *r){
     if(ehVermelho(r->dir)){
         r = rotaciona_esquerda(r);
     }
+    return r;
+}
+
+No *insere(No *r, int x){
+    if(r == NULL){
+        No *novo = calloc(1, sizeof(No));
+        novo->chave = x;
+        novo->cor = Vermelho;
+        return novo;
+    }
+    else if(x < r->chave){
+        r->esq = insere(r->esq, x);
+    }
+    else if(x > r->chave){
+        r->dir = insere(r->dir, x);
+    }
+    r = corrige_raiz(r);
     return r;
 }
