@@ -6,7 +6,7 @@ typedef struct no {
    struct no *esq, *dir;
 } no;
 
-no *maximo (no *r){
+no *maximo(no *r){
     if(r == NULL){
         return r;
     }

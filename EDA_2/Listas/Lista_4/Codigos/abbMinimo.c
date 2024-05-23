@@ -6,7 +6,7 @@ typedef struct no {
    struct no *esq, *dir;
 } no;
 
-no *minimo (no *r){
+no *minimo(no *r){
     if(r == NULL){
         return r;
     }
