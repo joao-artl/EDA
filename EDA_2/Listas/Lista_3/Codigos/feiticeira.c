@@ -1,83 +1,74 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <stdbool.h>
 
-#define MAX_ITEMS 262147 
+#define HASH_TABLE_SIZE 100003
 
-typedef struct item {
-    long long int id;
-    long long int quantity;
-    struct item *next;
-} Item;
+typedef struct Node {
+    int64_t key;
+    int64_t quantity;
+    struct Node* next;
+} Node;
 
-typedef struct {
-    Item *buckets[MAX_ITEMS];
-} HashTable;
-
-long long int hash(long long int key) {
-    return abs(key % MAX_ITEMS);
+unsigned int hash(int64_t key) {
+    return abs(key) % HASH_TABLE_SIZE;
 }
 
-void initHashTable(HashTable *ht) {
-    for (long long int i = 0; i < MAX_ITEMS; i++) {
-        ht->buckets[i] = NULL;
-    }
+Node* createNode(int64_t key, int64_t quantity) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->key = key;
+    newNode->quantity = quantity;
+    newNode->next = NULL;
+    return newNode;
 }
 
-void addOrUpdateItem(HashTable *ht, long long int id, long long int quantity) {
-    long long int index = hash(id);
-    Item *item = ht->buckets[index];
-    
-    while (item != NULL) {
-        if (item->id == id) {
-            item->quantity += quantity;
-            return;
+Node* findOrCreate(Node** hashTable, int64_t key) {
+    unsigned int index = hash(key);
+    Node* current = hashTable[index];
+    while (current != NULL) {
+        if (current->key == key) {
+            return current;
         }
-        item = item->next;
+        current = current->next;
     }
-
-    item = malloc(sizeof(Item));
-    item->id = id;
-    item->quantity = quantity;
-    item->next = ht->buckets[index];
-    ht->buckets[index] = item;
-}
-
-long long int totalItems(HashTable *ht) {
-    long long int total = 0;
-    for (long long int i = 0; i < MAX_ITEMS; i++) {
-        Item *item = ht->buckets[i];
-        while (item != NULL) {
-            total += item->quantity;
-            item = item->next;
-        }
-    }
-    return total;
-}
-
-void freeHashTable(HashTable *ht) {
-    for (long long int i = 0; i < MAX_ITEMS; i++) {
-        Item *item = ht->buckets[i];
-        while (item != NULL) {
-            Item *tmp = item;
-            item = item->next;
-            free(tmp);
-        }
-    }
+    Node* newNode = createNode(key, 0);
+    newNode->next = hashTable[index];
+    hashTable[index] = newNode;
+    return newNode;
 }
 
 int main() {
-    HashTable ht;
-    initHashTable(&ht);
-    long long int n;
-    scanf("%lld", &n);
-    
-    for (long long int i = 0; i < n; i++) {
-        long long int id, quantity;
-        scanf("%lld %lld", &id, &quantity);
-        addOrUpdateItem(&ht, id, quantity);
+    int N;
+    scanf("%d", &N);
+    Node* hashTable[HASH_TABLE_SIZE] = {NULL};
+    for (int i = 0; i < N; i++) {
+        int64_t K, Q;
+        scanf("%lld %lld", &K, &Q);
+        
+        Node* node = findOrCreate(hashTable, K);
+        node->quantity += Q;
+        if (node->quantity < 0) {
+            node->quantity = 0;
+        }
+    }
+    int64_t totalItems = 0;
+    for (int i = 0; i < HASH_TABLE_SIZE; i++) {
+        Node* current = hashTable[i];
+        while (current != NULL) {
+            totalItems += current->quantity;
+            current = current->next;
+        }
+    }
+    printf("%lld\n", totalItems);
+    for (int i = 0; i < HASH_TABLE_SIZE; i++) {
+        Node* current = hashTable[i];
+        while (current != NULL) {
+            Node* temp = current;
+            current = current->next;
+            free(temp);
+        }
     }
     
-    printf("%lld\n", totalItems(&ht));
-    freeHashTable(&ht);
     return 0;
 }
